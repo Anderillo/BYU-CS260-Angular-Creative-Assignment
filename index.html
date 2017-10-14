@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js"></script>
+        
+        <script src="app.js"></script>
+        <meta charset="utf-8">
+        <title>Javascript Tester</title>    
+    </head>
+    <body ng-app='javascript' ng-controller='mainCtrl'>
+        <h1>{{instructions}}</h1>
+        <div ng-view class='instructions' name='instructions'>
+            {{problems[currentIndex].question}}
+        </div><br>
+        <form class='form-group' name='javascriptForm' ng-submit='runCode()' ng-show='moreQuestions'>
+            <textarea class='form-control' rows='1' cols='100' disabled='disabled'>{{problems[currentIndex].header}}</textarea><br>
+            <textarea id='javascript' class='form-control' rows='10' cols='100' placeholder='Enter your Javascript Here' ng-model='javascriptForm.javascript'></textarea><br>
+            <textarea class='form-control' rows='1' cols='100' disabled='disabled'>{{problems[currentIndex].footer}}</textarea><br>
+            <button class='btn btn-primary' type='submit'>Next challenge!</button>
+        </form>
+        <div ng-repeat='test in problems[currentIndex].tests'><test test='test'/></div>
+    </body>
+</html>

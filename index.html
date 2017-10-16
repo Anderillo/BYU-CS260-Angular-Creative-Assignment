@@ -10,6 +10,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js"></script>
         
         <script src="app.js"></script>
+        <link rel="stylesheet" type="text/css" href="app.css">
         <meta charset="utf-8">
         <title>Javascript Tester</title>    
     </head>
@@ -20,15 +21,14 @@
         </div><br>
         <div class="input-group" style="width:90vw; margin:0 auto;">
         <form class='form-group' name='javascriptForm' ng-submit='runCode()' ng-show='moreQuestions'>
-            
             <textarea class='form-control' rows='1' cols='100' disabled='disabled'>{{problems[currentIndex].header}}</textarea><br>
-            
             <textarea id='javascript' class='form-control' rows='10' cols='100' placeholder='Enter your Javascript Here' ng-model='javascriptForm.javascript'></textarea><br>
             <textarea class='form-control' rows='1' cols='100' disabled='disabled'>{{problems[currentIndex].footer}}</textarea><br>
             <button class='btn btn-primary' type='submit'>Next challenge!</button>
         </form>
         </div>
 
-        <div ng-repeat='test in problems[currentIndex].tests'><test test='test'/></div>
+        <div style="display: inline-block;" ng-repeat='test in problems[currentIndex].tests'><test test='test'/></div>
+        <h1 class="text-center" style="color: green">Number of problems completed: {{currentIndex}}</h1>
     </body>
 </html>

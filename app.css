@@ -1,0 +1,9 @@
+#javascript {
+    resize: vertical;
+}
+
+.test {
+    font-weight: bold;
+    padding: 10px;
+    font-size: 20px;
+}

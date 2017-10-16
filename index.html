@@ -15,9 +15,9 @@
         <title>Javascript Tester</title>    
     </head>
     <body ng-app='javascript' ng-controller='mainCtrl' class="container-fluid">
-        <h1 class="text-center">{{instructions}}</h1>
+        <h1 class="text-center" style="color: green">Number of problems completed: {{currentIndex}}</h1>
         <div ng-view class='instructions' name='instructions'>
-            {{problems[currentIndex].question}}
+            <h4>{{problems[currentIndex].question}}</h4>
         </div><br>
         <div class="input-group" style="width:90vw; margin:0 auto;">
         <form class='form-group' name='javascriptForm' ng-submit='runCode()' ng-show='moreQuestions'>
@@ -29,6 +29,5 @@
         </div>
 
         <div style="display: inline-block;" ng-repeat='test in problems[currentIndex].tests'><test test='test'/></div>
-        <h1 class="text-center" style="color: green">Number of problems completed: {{currentIndex}}</h1>
     </body>
 </html>

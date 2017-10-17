@@ -22,7 +22,15 @@
         <div class="input-group" style="width:90vw; margin:0 auto;">
         <form class='form-group' name='javascriptForm' ng-submit='runCode()' ng-show='moreQuestions'>
             <textarea class='form-control' rows='1' cols='100' disabled='disabled'>{{problems[currentIndex].header}}</textarea><br>
-            <textarea id='javascript' class='form-control' rows='10' cols='100' placeholder='Enter your Javascript Here' ng-model='javascriptForm.javascript'></textarea><br>
+            <textarea 
+                id='javascript' 
+                class='form-control' 
+                rows='10' 
+                cols='100' 
+                placeholder='Enter your Javascript Here' 
+                ng-model='javascriptForm.javascript' 
+                onkeydown="if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'\t'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}">
+            </textarea><br>
             <textarea class='form-control' rows='1' cols='100' disabled='disabled'>{{problems[currentIndex].footer}}</textarea><br>
             <button class='btn btn-primary' type='submit'>Run</button>
             <button class='btn btn-primary' ng-disabled='!canAdvance' ng-click='goToNextProblem()'>Next problem!</button>

@@ -19,7 +19,7 @@ function mainCtrl($scope, $sce) {
   $scope.checkMark = ['green', '&#x2713;']
   $scope.canAdvance = false;
   $scope.problems = [{
-    question:'Write a function that returns the value of a1 and a2 added together.',
+    question:'Write a function that returns the value of a1 and a2 added together.\nExample: if a1 = 1 and a2 = 2, you should return 3.',
     header: 'function addition(var a1, var a2) {',
     footer: '}',
     tests: [{
@@ -49,7 +49,7 @@ function mainCtrl($scope, $sce) {
       }]
   },
   {
-    question:'Write a function that returns the value of a1 and a2 multiplied together.',
+    question:'Write a function that returns the value of a1 and a2 multiplied together.\nExample: if a1 = 1 and a2 = 2, you should return 2.',
     header: 'function multiplication(var a1, var a2) {',
     footer: '}',
     tests: [{
@@ -77,17 +77,47 @@ function mainCtrl($scope, $sce) {
         argument: [42, 423452345],
         answer: 17784998490
       }]
+  },
+  {
+    question:'Write a function that returns the sum of all numbers from a1 to a2, not including a2.\nYou can assume a1 < a2\nExample: if a1 = 2 and a2 = 7, you should return 2 + 3 + 4 + 5 + 6 or 20.',
+    header: 'function sumBetween(var a1, var a2) {',
+    footer: '}',
+    tests:[{
+        passed: $scope.xMark,
+        argument: [2, 7],
+        answer: 20
+    },
+    {
+        passed: $scope.xMark,
+        argument: [1, 2],
+        answer: 1
+    },
+    {
+        passed: $scope.xMark,
+        argument: [10, 100],
+        answer: 4905
+    },
+    {
+        passed: $scope.xMark,
+        argument: [-4, 2],
+        answer: -9
+    },
+    {
+        passed: $scope.xMark,
+        argument: [4, 4000],
+        answer: 7997994
+    }]
   }];
   $scope.currentIndex = 0;
 
   $scope.runCode = function() {
     var passedAllTests = true;
-    for (var i = 0; i < $scope.problems[$scope.currentIndex].tests.length; i++) {
-      $scope.problems[$scope.currentIndex].tests[i].passed = $scope.xMark;
-      var code = createHeaderVars($scope.problems[$scope.currentIndex].tests[i].argument) + $scope.javascriptForm.javascript;
+    for (var i_ = 0; i_ < $scope.problems[$scope.currentIndex].tests.length; i_++) {
+      $scope.problems[$scope.currentIndex].tests[i_].passed = $scope.xMark;
+      var code = createHeaderVars($scope.problems[$scope.currentIndex].tests[i_].argument) + $scope.javascriptForm.javascript;
       var userAnswer = eval('(function() {' + code + '}())');
-      if (userAnswer !== $scope.problems[$scope.currentIndex].tests[i].answer) passedAllTests = false;
-      else $scope.problems[$scope.currentIndex].tests[i].passed = $scope.checkMark;
+      if (userAnswer !== $scope.problems[$scope.currentIndex].tests[i_].answer) passedAllTests = false;
+      else $scope.problems[$scope.currentIndex].tests[i_].passed = $scope.checkMark;
     }
 
     if (passedAllTests) {
@@ -96,6 +126,7 @@ function mainCtrl($scope, $sce) {
   }
 
   $scope.goToNextProblem = function() {
+    $scope.canAdvance = false;
     $scope.currentIndex++;
     if ($scope.currentIndex >= $scope.problems.length) {
       $scope.moreQuestions = false;

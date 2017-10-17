@@ -79,34 +79,34 @@ function mainCtrl($scope, $sce) {
       }]
   },
   {
-    question:'Write a function that returns the sum of all numbers from a1 to a2, not including a2.\nYou can assume a1 < a2\nExample: if a1 = 2 and a2 = 7, you should return 2 + 3 + 4 + 5 + 6 or 20.',
-    header: 'function sumBetween(var a1, var a2) {',
+    question:'Write a function that returns an array with every value between a1 and a2 (inclusive).\nExample: if a1 = 1 and a2 = 2, you should return the array [1,2]',
+    header: 'function list(var a1, var a2) {',
     footer: '}',
-    tests:[{
-        passed: $scope.xMark,
-        argument: [2, 7],
-        answer: 20
-    },
-    {
+    tests: [{
         passed: $scope.xMark,
         argument: [1, 2],
-        answer: 1
-    },
-    {
+        answer: '1,2'
+      }, 
+      {
         passed: $scope.xMark,
-        argument: [10, 100],
-        answer: 4905
-    },
-    {
+        argument: [2, 3],
+        answer: '2,3'
+      },
+      {
         passed: $scope.xMark,
-        argument: [-4, 2],
-        answer: -9
-    },
-    {
+        argument: [10, 10],
+        answer: '10'
+      },
+      {
         passed: $scope.xMark,
-        argument: [4, 4000],
-        answer: 7997994
-    }]
+        argument: [14, 27],
+        answer: '14,15,16,17,18,19,20,21,22,23,24,25,26,27'
+      },
+      {
+        passed: $scope.xMark,
+        argument: [42, 50],
+        answer: '42,43,44,45,46,47,48,49,50'
+      }]
   }];
   $scope.currentIndex = 0;
 
@@ -116,8 +116,13 @@ function mainCtrl($scope, $sce) {
       $scope.problems[$scope.currentIndex].tests[i_].passed = $scope.xMark;
       var code = createHeaderVars($scope.problems[$scope.currentIndex].tests[i_].argument) + $scope.javascriptForm.javascript;
       var userAnswer = eval('(function() {' + code + '}())');
+<<<<<<< HEAD
       if (userAnswer !== $scope.problems[$scope.currentIndex].tests[i_].answer) passedAllTests = false;
       else $scope.problems[$scope.currentIndex].tests[i_].passed = $scope.checkMark;
+=======
+      if (userAnswer != $scope.problems[$scope.currentIndex].tests[i].answer) passedAllTests = false;
+      else $scope.problems[$scope.currentIndex].tests[i].passed = $scope.checkMark;
+>>>>>>> 54b183e243bf916f52687d39d80a3b0c838751cb
     }
 
     if (passedAllTests) {

@@ -111,17 +111,22 @@ function mainCtrl($scope, $sce) {
   $scope.currentIndex = 0;
 
   $scope.runCode = function() {
-    var passedAllTests = true;
-    for (var i_ = 0; i_ < $scope.problems[$scope.currentIndex].tests.length; i_++) {
-      $scope.problems[$scope.currentIndex].tests[i_].passed = $scope.xMark;
-      var code = createHeaderVars($scope.problems[$scope.currentIndex].tests[i_].argument) + $scope.javascriptForm.javascript;
-      var userAnswer = eval('(function() {' + code + '}())');
-      if (userAnswer != $scope.problems[$scope.currentIndex].tests[i_].answer) passedAllTests = false;
-      else $scope.problems[$scope.currentIndex].tests[i_].passed = $scope.checkMark;
-    }
+    try{
+        var passedAllTests = true;
+        for (var i_ = 0; i_ < $scope.problems[$scope.currentIndex].tests.length; i_++) {
+            $scope.problems[$scope.currentIndex].tests[i_].passed = $scope.xMark;
+            var code = createHeaderVars($scope.problems[$scope.currentIndex].tests[i_].argument) + $scope.javascriptForm.javascript;
+            var userAnswer = eval('(function() {' + code + '}())');
+            if (userAnswer != $scope.problems[$scope.currentIndex].tests[i_].answer) passedAllTests = false;
+            else $scope.problems[$scope.currentIndex].tests[i_].passed = $scope.checkMark;
+        }
 
-    if (passedAllTests) {
-      $scope.canAdvance = true;
+        if (passedAllTests) {
+            $scope.canAdvance = true;
+        }
+    }
+    catch(err){
+        alert(err);
     }
   }
 

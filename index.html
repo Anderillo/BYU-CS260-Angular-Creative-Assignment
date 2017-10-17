@@ -29,6 +29,7 @@
                 cols='100' 
                 placeholder='Enter your Javascript Here' 
                 ng-model='javascriptForm.javascript' 
+                autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
                 onkeydown="if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'\t'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}">
             </textarea><br>
             <textarea class='form-control' rows='1' cols='100' disabled='disabled'>{{problems[currentIndex].footer}}</textarea><br>
@@ -36,7 +37,8 @@
             <button class='btn btn-primary' ng-disabled='!canAdvance' ng-click='goToNextProblem()'>Next problem!</button>
         </form>
         </div>
-
+        
         <div style="display: inline-block;" ng-repeat='test in problems[currentIndex].tests'><test test='test'/></div>
+        <p>X's turn to checks as you pass test cases</p>
     </body>
 </html>

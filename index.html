@@ -24,7 +24,8 @@
             <textarea class='form-control' rows='1' cols='100' disabled='disabled'>{{problems[currentIndex].header}}</textarea><br>
             <textarea id='javascript' class='form-control' rows='10' cols='100' placeholder='Enter your Javascript Here' ng-model='javascriptForm.javascript'></textarea><br>
             <textarea class='form-control' rows='1' cols='100' disabled='disabled'>{{problems[currentIndex].footer}}</textarea><br>
-            <button class='btn btn-primary' type='submit'>Next challenge!</button>
+            <button class='btn btn-primary' type='submit'>Run</button>
+            <button class='btn btn-primary' ng-disabled='!canAdvance' ng-click='goToNextProblem()'>Next problem!</button>
         </form>
         </div>
 

@@ -17,6 +17,7 @@ function mainCtrl($scope, $sce) {
   $scope.instructions = 'Instructions';
   $scope.xMark = ['red', '&#x2717;'];
   $scope.checkMark = ['green', '&#x2713;']
+  $scope.canAdvance = false;
   $scope.problems = [{
     question:'Write a function that returns the value of a1 and a2 added together.',
     header: 'function addition(var a1, var a2) {',
@@ -90,13 +91,17 @@ function mainCtrl($scope, $sce) {
     }
 
     if (passedAllTests) {
-      $scope.currentIndex++;
-      if ($scope.currentIndex >= $scope.problems.length) {
-        $scope.moreQuestions = false;
-        $scope.instructions = 'Good job, you completed all of the challenges!';
-      }
-      $scope.javascriptForm.javascript = '';
+      $scope.canAdvance = true;
     }
+  }
+
+  $scope.goToNextProblem = function() {
+    $scope.currentIndex++;
+    if ($scope.currentIndex >= $scope.problems.length) {
+      $scope.moreQuestions = false;
+      $scope.instructions = 'Good job, you completed all of the challenges!';
+    }
+    $scope.javascriptForm.javascript = '';
   }
 }
 

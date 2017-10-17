@@ -116,7 +116,7 @@ function mainCtrl($scope, $sce) {
       $scope.problems[$scope.currentIndex].tests[i_].passed = $scope.xMark;
       var code = createHeaderVars($scope.problems[$scope.currentIndex].tests[i_].argument) + $scope.javascriptForm.javascript;
       var userAnswer = eval('(function() {' + code + '}())');
-      if (userAnswer !== $scope.problems[$scope.currentIndex].tests[i_].answer) passedAllTests = false;
+      if (userAnswer != $scope.problems[$scope.currentIndex].tests[i_].answer) passedAllTests = false;
       else $scope.problems[$scope.currentIndex].tests[i_].passed = $scope.checkMark;
     }
 

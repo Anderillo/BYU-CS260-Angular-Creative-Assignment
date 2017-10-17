@@ -77,6 +77,36 @@ function mainCtrl($scope, $sce) {
         argument: [42, 423452345],
         answer: 17784998490
       }]
+  },
+  {
+    question:'Write a function that returns an array with every value between a1 and a2 (inclusive).',
+    header: 'function list(var a1, var a2) {',
+    footer: '}',
+    tests: [{
+        passed: $scope.xMark,
+        argument: [1, 2],
+        answer: '1,2'
+      }, 
+      {
+        passed: $scope.xMark,
+        argument: [2, 3],
+        answer: '2,3'
+      },
+      {
+        passed: $scope.xMark,
+        argument: [10, 10],
+        answer: '10'
+      },
+      {
+        passed: $scope.xMark,
+        argument: [14, 27],
+        answer: '14,15,16,17,18,19,20,21,22,23,24,25,26,27'
+      },
+      {
+        passed: $scope.xMark,
+        argument: [42, 50],
+        answer: '42,43,44,45,46,47,48,49,50'
+      }]
   }];
   $scope.currentIndex = 0;
 
@@ -86,7 +116,7 @@ function mainCtrl($scope, $sce) {
       $scope.problems[$scope.currentIndex].tests[i].passed = $scope.xMark;
       var code = createHeaderVars($scope.problems[$scope.currentIndex].tests[i].argument) + $scope.javascriptForm.javascript;
       var userAnswer = eval('(function() {' + code + '}())');
-      if (userAnswer !== $scope.problems[$scope.currentIndex].tests[i].answer) passedAllTests = false;
+      if (userAnswer != $scope.problems[$scope.currentIndex].tests[i].answer) passedAllTests = false;
       else $scope.problems[$scope.currentIndex].tests[i].passed = $scope.checkMark;
     }
 

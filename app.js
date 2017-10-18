@@ -107,6 +107,36 @@ function mainCtrl($scope, $sce) {
         argument: [42, 50],
         answer: '42,43,44,45,46,47,48,49,50'
       }]
+  },
+  {
+   question:'Write a function that returns the largest of a1, a2, and a3.\nExample: if a1 = 2, a2 = 7, and a3 = 4, you should return 4',
+   header: 'function largest(var a1, var a2, var a3) {',
+   footer: '}',
+   tests: [{
+        passed: $scope.xMark,
+        argument: [2, 7, 4],
+        answer: '7'
+      },
+      {
+        passed: $scope.xMark,
+        argument: [1, 2, 3],
+        answer: '3'
+      },
+      {
+        passed: $scope.xMark,
+        argument: [-5, -1, -17],
+        answer: '-1'
+      },
+      {
+        passed: $scope.xMark,
+        argument: [100, 99, 99],
+        answer: '100'
+      },
+      {
+        passed: $scope.xMark,
+        argument: [10, 10, 10],
+        answer: '10'
+      }]
   }];
   $scope.currentIndex = 0;
 

@@ -9,7 +9,6 @@ function createHeaderVars(args) {
     header += '\nvar a' + (i + 1) + ' = ' + args[i] + ';';
   }
   header += '\n';
-  alert(header);
   return header;
 }
 
@@ -145,6 +144,40 @@ function mainCtrl($scope, $sce) {
         ]
     },
     {
+      question:'Write a function that interprets the string a1 as a number in base a2, and returns the number in base a3.' +
+                  '\n0 < a3 <= 16. a2 and a3 are both integers in base 10.' +
+                  '\nExample: if a1 = 10, a2 = 42, and a3 = 2, you should return 101010.',
+      header: 'function changeBase(var a1, var a2, var a3) {',
+      footer: '}',
+      tests: [{
+          passed: $scope.xMark,
+          argument: ['\"42\"', 10, 2],
+          answer: 101010
+        },
+        {
+          passed: $scope.xMark,
+          argument: ['\"8A\"', 16, 10],
+          answer: '138'
+        },
+        {
+          passed: $scope.xMark,
+          argument: ['\"461\"', 8, 3],
+          answer: '102022'
+        },
+        {
+          passed: $scope.xMark,
+          argument: ['\"A6BC89\"', 13, 5],
+          answer: '2000114404'
+        },
+        {
+          passed: $scope.xMark,
+          argument: ['\"18745\"', 9, 9],
+          answer: '18745'
+        }
+      ]
+      // return parseInt(a1, a2).toString(a3);
+    },
+    {
       question:'Write a function that returns the result of performing the operation a2 between every element on the array a1.' +
                   ' a1 will have at least one element, and a2 will be +, -, *, /, or %.' +
                   '\nExample: if a1 = [1, 3, 5] and a2 = \"*\", you should return 1*3*5=15.',
@@ -210,39 +243,6 @@ function mainCtrl($scope, $sce) {
         //     else if (a2 == "%") total %= a1[i];
         // }
         // return total;
-    },
-    {
-      question:'Write a function that interprets the string a1 as a number in base a2, and returns the number in base a3.' +
-                  '\n0 < a3 <= 16. a2 and a3 are both integers in base 10.' +
-                  '\nExample: if a1 = 10, a2 = 42, and a3 = 2, you should return 101010.',
-      header: 'function changeBase(var a1, var a2, var a3) {',
-      footer: '}',
-      tests: [{
-          passed: $scope.xMark,
-          argument: ['\"42\"', 10, 2],
-          answer: 101010
-        },
-        {
-          passed: $scope.xMark,
-          argument: ['\"8A\"', 16, 10],
-          answer: 138
-        },
-        {
-          passed: $scope.xMark,
-          argument: ['\"461\"', 8, 3],
-          answer: 102022
-        },
-        {
-          passed: $scope.xMark,
-          argument: ['\"A6BC89\"', 13, 5],
-          answer: 2000114404
-        },
-        {
-          passed: $scope.xMark,
-          argument: ['\"18745\"', 9, 9],
-          answer: 18745
-        }
-      ]
     }
   ];
   $scope.currentIndex = 0;
@@ -290,71 +290,3 @@ function testDirective() {
     )
   };
 }
-
-// ,
-// {
-//   question:'Write a function that returns the result of performing the operation a2 between every element on the array a1.' +
-//               ' a1 will have at least one element, and a2 will be +, -, *, /, or %.' +
-//               '\nExample: if a1 = [1, 3, 5] and a2 = \"*\", you should return 1*3*5=15.',
-//   header: 'function performOp(var a1, var a2) {',
-//   footer: '}',
-//   tests: [{
-//       passed: $scope.xMark,
-//       argument: ['[1239481274,984,100,6]', '\"+\"'],
-//       answer: 1239482364
-//     },
-//     {
-//       passed: $scope.xMark,
-//       argument: ['[43,47,42,6]', '\"+\"'],
-//       answer: 138
-//     },
-//     {
-//       passed: $scope.xMark,
-//       argument: ['[1239481274,984,100,6]', '\"-\"'],
-//       answer: 1239480184
-//     },
-//     {
-//       passed: $scope.xMark,
-//       argument: ['[63,845,1,0]', '\"-\"'],
-//       answer: -783
-//     },
-//     {
-//       passed: $scope.xMark,
-//       argument: ['[1,3,5]', '\"*\"'],
-//       answer: 15
-//     },
-//     {
-//       passed: $scope.xMark,
-//       argument: ['[9453,334,1]', '\"*\"'],
-//       answer: 3157302
-//     },
-//     {
-//       passed: $scope.xMark,
-//       argument: ['[12,4,3]', '\"/\"'],
-//       answer: 1
-//     },
-//     {
-//       passed: $scope.xMark,
-//       argument: ['[100,4,4]', '\"/\"'],
-//       answer: 6.25
-//     },
-//     {
-//       passed: $scope.xMark,
-//       argument: ['[1239481274,984,100,6]', '\"%\"'],
-//       answer: 4
-//     },
-//     {
-//       passed: $scope.xMark,
-//       argument: ['[4904868,10]', '\"%\"'],
-//       answer: 8
-//     }]
-//     // var total = a1[0];
-//     // for (var i = 1; i < a1.length; i++) {
-//     //     if (a2 == "+") total += a1[i];
-//     //     else if (a2 == "-") total -= a1[i];
-//     //     else if (a2 == "*") total *= a1[i];
-//     //     else if (a2 == "/") total /= a1[i];
-//     //     else if (a2 == "%") total %= a1[i];
-//     // }
-//     // return total;
-// }

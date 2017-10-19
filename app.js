@@ -107,6 +107,11 @@ function mainCtrl($scope, $sce) {
         argument: [42, 50],
         answer: '42,43,44,45,46,47,48,49,50'
       }]
+      // var temp = [];
+      // for (var i = a1; i <= a2; i++) {
+      //   temp.push(i);
+      // }
+      // return temp;
   },
   {
    question:'Write a function that returns the largest of a1, a2, and a3.\nExample: if a1 = 2, a2 = 7, and a3 = 4, you should return 7',

@@ -137,6 +137,36 @@ function mainCtrl($scope, $sce) {
         argument: [10, 10, 10],
         answer: '10'
       }]
+  },
+  {
+   question:'Write a function that returns true if a1 is a palindrome and false if it is not.\nExample: if a1 = "bob" return true, if a1 = "Bob" return false',
+   header: 'function isPalindrome(var a1) {',
+   footer: '}',
+   tests: [{
+        passed: $scope.xMark,
+        argument: ["\"bob\""],
+        answer: true
+      },
+      {
+        passed: $scope.xMark,
+        argument: ["\"Bob\""],
+        answer: false
+      },
+      {
+        passed: $scope.xMark,
+        argument: ["\"abcd\""],
+        answer: false
+      },
+      {
+        passed: $scope.xMark,
+        argument: ["\"AabBBbaA\""],
+        answer: true
+      },
+      {
+        passed: $scope.xMark,
+        argument: ["\"f\""],
+        answer: true
+      }]
   }];
   $scope.currentIndex = 0;
 

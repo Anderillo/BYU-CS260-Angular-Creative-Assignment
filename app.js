@@ -9,6 +9,7 @@ function createHeaderVars(args) {
     header += '\nvar a' + (i + 1) + ' = ' + args[i] + ';';
   }
   header += '\n';
+  alert(header);
   return header;
 }
 
@@ -47,7 +48,8 @@ function mainCtrl($scope, $sce) {
           passed: $scope.xMark,
           argument: [42, 423452345],
           answer: 423452387
-        }]
+        }
+      ]
     },
     {
       question:'Write a function that returns the value of a1 and a2 multiplied together.\nExample: if a1 = 1 and a2 = 2, you should return 2.',
@@ -77,7 +79,8 @@ function mainCtrl($scope, $sce) {
           passed: $scope.xMark,
           argument: [42, 423452345],
           answer: 17784998490
-        }]
+        }
+      ]
     },
     {
       question:'Write a function that returns an array with every value between a1 and a2 (inclusive).\nExample: if a1 = 1 and a2 = 2, you should return the array [1,2]',
@@ -107,7 +110,8 @@ function mainCtrl($scope, $sce) {
           passed: $scope.xMark,
           argument: [42, 50],
           answer: '42,43,44,45,46,47,48,49,50'
-        }]
+        }
+      ]
     },
     {
       question:'Write a function that returns the largest of a1, a2, and a3.\nExample: if a1 = 2, a2 = 7, and a3 = 4, you should return 4',
@@ -137,7 +141,8 @@ function mainCtrl($scope, $sce) {
             passed: $scope.xMark,
             argument: [10, 10, 10],
             answer: '10'
-          }]
+          }
+        ]
     },
     {
       question:'Write a function that returns the result of performing the operation a2 between every element on the array a1.' +
@@ -194,7 +199,8 @@ function mainCtrl($scope, $sce) {
           passed: $scope.xMark,
           argument: ['[4904868,10]', '\"%\"'],
           answer: 8
-        }]
+        }
+      ]
         // var total = a1[0];
         // for (var i = 1; i < a1.length; i++) {
         //     if (a2 == "+") total += a1[i];
@@ -204,6 +210,39 @@ function mainCtrl($scope, $sce) {
         //     else if (a2 == "%") total %= a1[i];
         // }
         // return total;
+    },
+    {
+      question:'Write a function that interprets the string a1 as a number in base a2, and returns the number in base a3.' +
+                  '\n0 < a3 <= 16. a2 and a3 are both integers in base 10.' +
+                  '\nExample: if a1 = 10, a2 = 42, and a3 = 2, you should return 101010.',
+      header: 'function changeBase(var a1, var a2, var a3) {',
+      footer: '}',
+      tests: [{
+          passed: $scope.xMark,
+          argument: ['\"42\"', 10, 2],
+          answer: 101010
+        },
+        {
+          passed: $scope.xMark,
+          argument: ['\"8A\"', 16, 10],
+          answer: 138
+        },
+        {
+          passed: $scope.xMark,
+          argument: ['\"461\"', 8, 3],
+          answer: 102022
+        },
+        {
+          passed: $scope.xMark,
+          argument: ['\"A6BC89\"', 13, 5],
+          answer: 2000114404
+        },
+        {
+          passed: $scope.xMark,
+          argument: ['\"18745\"', 9, 9],
+          answer: 18745
+        }
+      ]
     }
   ];
   $scope.currentIndex = 0;

@@ -109,7 +109,7 @@ function mainCtrl($scope, $sce) {
       }]
   },
   {
-   question:'Write a function that returns the largest of a1, a2, and a3.\nExample: if a1 = 2, a2 = 7, and a3 = 4, you should return 4',
+   question:'Write a function that returns the largest of a1, a2, and a3.\nExample: if a1 = 2, a2 = 7, and a3 = 4, you should return 7',
    header: 'function largest(var a1, var a2, var a3) {',
    footer: '}',
    tests: [{
